@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WinFormsApp1
+{
+    public partial class ModoAleatorio : Form
+    {
+        // n: vertices del grafo
+        public ModoAleatorio(int vertices)
+        {
+            InitializeComponent();
+            this.vertices = vertices;
+        }
+
+        private void ModoAleatorio_Load(object sender, EventArgs e)
+        {
+            // limpia la tabla
+            GenerarTabla(vertices);
+            // generar combo box de fuente
+            cmbFuente.Items.Clear();
+            for (int i = 0; i < vertices; ++i)
+            {
+                cmbFuente.Items.Add(i.ToString());
+            }
+            //por default
+            cmbFuente.SelectedIndex = 0;
+
+            // grafo aleatorio
+            MatrizActual = GenerarGrafoAleatorio(vertices, 40);
+            // llena tabla de datos
+            for (int i = 0; i < vertices; ++i)
+            {
+                for (int j = 0; j < vertices; ++j)
+                {
+                    dvg1.Rows[i].Cells[j].Value = MatrizActual[i, j];
+                }
+            }
+        }
+        // vertices del grafo
+        private int vertices = 0;
+        private int[,] MatrizActual;
+        // boton para aleatorizar nuevamente
+        private void btnAleatorio_Click(object sender, EventArgs e)
+        {
+            // grafo aleatorio
+            MatrizActual = GenerarGrafoAleatorio(vertices, 40);
+            // llena tabla de datos
+            for (int i = 0; i < vertices; ++i)
+            {
+                for (int j = 0; j < vertices; ++j)
+                {
+                    dvg1.Rows[i].Cells[j].Value = MatrizActual[i, j];
+                }
+            }
+        }
+        // boton del maximo flujo
+        private void btnMFlujo_Click(object sender, EventArgs e)
+        {
+            FordFulkerson Fd = new FordFulkerson(vertices);
+            Funciones fn = new Funciones();
+
+            int verticeFuente = Convert.ToInt32(cmbFuente.SelectedItem.ToString());
+            Grafo grafo = fn.MatrizAGrafo(MatrizActual, vertices);
+
+            int maxFlow = Fd.MaxFlow(grafo, verticeFuente, vertices - 1, out int[,] flujoAsignado);
+            
+            txtbMFlujo.Text = maxFlow.ToString();
+        }
+    }
+
+}

@@ -1,5 +1,4 @@
 ﻿using System.Drawing.Drawing2D;
-
 public class Arista { 
     public int Origen { get; set; }
     public int Destino{ get; set; }
@@ -46,6 +45,7 @@ public class FordFulkerson {
     {
         N = n;
     }
+
     // s: sumidero
     // t: vertedero
     private bool BFS(int[,] Grafo, int s, int t, int[] parent) {

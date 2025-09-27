@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
             numericUpDown1 = new NumericUpDown();
             button1 = new Button();
@@ -107,6 +108,7 @@
             Controls.Add(numericUpDown1);
             Controls.Add(label1);
             ForeColor = Color.Coral;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Problema de flujo máximo";

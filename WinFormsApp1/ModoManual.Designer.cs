@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModoManual));
             dvg1 = new DataGridView();
             panel1 = new Panel();
             btnMFlujo = new Button();
@@ -36,6 +38,7 @@
             label2 = new Label();
             txtbMFlujo = new TextBox();
             label1 = new Label();
+            notifyIcon1 = new NotifyIcon(components);
             ((System.ComponentModel.ISupportInitialize)dvg1).BeginInit();
             SuspendLayout();
             // 
@@ -114,6 +117,11 @@
             label1.TabIndex = 10;
             label1.Text = "El maximo flujo es:";
             // 
+            // notifyIcon1
+            // 
+            notifyIcon1.Text = "notifyIcon1";
+            notifyIcon1.Visible = true;
+            // 
             // ModoManual
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -128,6 +136,7 @@
             Controls.Add(btnMFlujo);
             Controls.Add(panel1);
             Controls.Add(dvg1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ModoManual";
             Text = "ModoManual";
             Load += ModoManual_Load;
@@ -181,5 +190,6 @@
         private Label label2;
         private TextBox txtbMFlujo;
         private Label label1;
+        private NotifyIcon notifyIcon1;
     }
 }

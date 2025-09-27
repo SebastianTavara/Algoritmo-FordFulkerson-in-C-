@@ -19,12 +19,14 @@ namespace WinFormsApp1
             InitializeComponent();
             this.vertices = vertices;
             this.MatrizActual = new int[vertices, vertices];
-            
+            this.viewer = new GViewer();
+            viewer.Dock = DockStyle.Fill;
+            panel1.Controls.Add(viewer);
         }
 
         public int vertices;
         private int[,] MatrizActual;
-
+        private GViewer viewer;
         private void ModoManual_Load(object sender, EventArgs e)
         {
             GenerarTabla(vertices);
@@ -42,6 +44,15 @@ namespace WinFormsApp1
 
         private void btnMFlujo_Click(object sender, EventArgs e)
         {
+            // verifica si es que el vertice seleccionado como inicio no es el mismo que el vertedero:
+
+            if (Convert.ToInt32(cmbFuente.SelectedItem.ToString()) == vertices - 1)
+            {
+                // noti
+                NotificacionFuenteIncorrecta();
+                return;
+            }
+
             FordFulkerson Fd = new FordFulkerson(vertices);
             Funciones fn = new Funciones();
 
@@ -68,13 +79,13 @@ namespace WinFormsApp1
         private void DibujarGrafo()
         {
 
-            GViewer viewer = new GViewer();
             Graph graph = new Graph("grafo");
             graph.Attr.LayerDirection = LayerDirection.LR;
 
             // agregar nodos y aristas
             for (int i = 0; i < vertices; ++i)
             {
+                graph.AddNode(i.ToString());
                 for (int j = 0; j < vertices; ++j)
                 {
                     if (MatrizActual[i, j] > 0)
@@ -85,13 +96,21 @@ namespace WinFormsApp1
                     }
                 }
             }
+            // color nodo inicio
+            graph.FindNode("0").Attr.FillColor = Microsoft.Msagl.Drawing.Color.Green;
+            // ultimo nodo
+            graph.FindNode((vertices - 1).ToString()).Attr.FillColor = Microsoft.Msagl.Drawing.Color.Red;
+
             viewer.Graph = graph;
-            viewer.Dock = DockStyle.Fill;
-
-            panel1.Controls.Clear();
-            panel1.Controls.Add(viewer);
-
+            
         }
+        private void NotificacionFuenteIncorrecta()
+        {
+            notifyIcon1.BalloonTipTitle = "Acción no permitida";
+            notifyIcon1.BalloonTipText = "Está usando el mismo vértice de origen y destino. Por favor, corríjalo para continuar.";
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
 
+            notifyIcon1.ShowBalloonTip(5000);
+        }
     }
 }

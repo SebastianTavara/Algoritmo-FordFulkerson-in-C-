@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModoAleatorio));
             dvg1 = new DataGridView();
             btnMFlujo = new Button();
             btnAleatorio = new Button();
@@ -37,6 +39,7 @@
             label2 = new Label();
             cmbFuente = new ComboBox();
             label3 = new Label();
+            notifyIcon1 = new NotifyIcon(components);
             ((System.ComponentModel.ISupportInitialize)dvg1).BeginInit();
             SuspendLayout();
             // 
@@ -132,6 +135,11 @@
             label3.TabIndex = 9;
             label3.Text = "El nodo Sumidero siempre sera el ultimo vertice";
             // 
+            // notifyIcon1
+            // 
+            notifyIcon1.Text = "notifyIcon1";
+            notifyIcon1.Visible = true;
+            // 
             // ModoAleatorio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -147,6 +155,7 @@
             Controls.Add(btnAleatorio);
             Controls.Add(btnMFlujo);
             Controls.Add(dvg1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "ModoAleatorio";
             Text = "ModoAleatorio";
@@ -218,6 +227,6 @@
         private Label label2;
         private ComboBox cmbFuente;
         private Label label3;
-
+        private NotifyIcon notifyIcon1;
     }
 }

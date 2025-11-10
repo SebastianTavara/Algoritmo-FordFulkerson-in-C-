@@ -6,6 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private List<string> pasosFF = new List<string>();
 
         /// <summary>
         /// Clean up any resources being used.
@@ -40,6 +41,12 @@
             cmbFuente = new ComboBox();
             label3 = new Label();
             notifyIcon1 = new NotifyIcon(components);
+            label4 = new Label();
+            cmbSumidero = new ComboBox();
+            btnSgte = new Button();
+            btnAnt = new Button();
+            btnCortmin = new Button();
+            txtbCorteMinimo = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dvg1).BeginInit();
             SuspendLayout();
             // 
@@ -60,7 +67,7 @@
             // 
             // btnMFlujo
             // 
-            btnMFlujo.Location = new Point(696, 321);
+            btnMFlujo.Location = new Point(719, 321);
             btnMFlujo.Name = "btnMFlujo";
             btnMFlujo.Size = new Size(138, 51);
             btnMFlujo.TabIndex = 1;
@@ -110,7 +117,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold);
             label2.ForeColor = Color.FromArgb(211, 218, 217);
-            label2.Location = new Point(737, 389);
+            label2.Location = new Point(624, 389);
             label2.Name = "label2";
             label2.Size = new Size(91, 16);
             label2.TabIndex = 6;
@@ -119,7 +126,7 @@
             // cmbFuente
             // 
             cmbFuente.FormattingEnabled = true;
-            cmbFuente.Location = new Point(856, 384);
+            cmbFuente.Location = new Point(719, 384);
             cmbFuente.Name = "cmbFuente";
             cmbFuente.Size = new Size(121, 23);
             cmbFuente.TabIndex = 8;
@@ -140,12 +147,75 @@
             notifyIcon1.Text = "notifyIcon1";
             notifyIcon1.Visible = true;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Bold);
+            label4.ForeColor = Color.FromArgb(211, 218, 217);
+            label4.Location = new Point(849, 388);
+            label4.Name = "label4";
+            label4.Size = new Size(108, 16);
+            label4.TabIndex = 10;
+            label4.Text = "Nodo Sumidero:";
+            // 
+            // cmbSumidero
+            // 
+            cmbSumidero.FormattingEnabled = true;
+            cmbSumidero.Location = new Point(966, 384);
+            cmbSumidero.Name = "cmbSumidero";
+            cmbSumidero.Size = new Size(121, 23);
+            cmbSumidero.TabIndex = 8;
+            // 
+            // btnSgte
+            // 
+            btnSgte.Location = new Point(414, 375);
+            btnSgte.Name = "btnSgte";
+            btnSgte.Size = new Size(75, 23);
+            btnSgte.TabIndex = 11;
+            btnSgte.Text = "Siguiente";
+            btnSgte.UseVisualStyleBackColor = true;
+            btnSgte.Click += btnSgte_Click;
+            // 
+            // btnAnt
+            // 
+            btnAnt.Location = new Point(278, 375);
+            btnAnt.Name = "btnAnt";
+            btnAnt.Size = new Size(75, 23);
+            btnAnt.TabIndex = 12;
+            btnAnt.Text = "Anterior";
+            btnAnt.UseVisualStyleBackColor = true;
+            btnAnt.Click += btnAnt_Click;
+            // 
+            // btnCortmin
+            // 
+            btnCortmin.Location = new Point(101, 375);
+            btnCortmin.Name = "btnCortmin";
+            btnCortmin.Size = new Size(100, 32);
+            btnCortmin.TabIndex = 13;
+            btnCortmin.Text = "Corte minimo";
+            btnCortmin.UseVisualStyleBackColor = true;
+            btnCortmin.Click += btnCortmin_Click;
+            // 
+            // txtbCorteMinimo
+            // 
+            txtbCorteMinimo.Location = new Point(76, 425);
+            txtbCorteMinimo.Multiline = true;
+            txtbCorteMinimo.Name = "txtbCorteMinimo";
+            txtbCorteMinimo.Size = new Size(146, 36);
+            txtbCorteMinimo.TabIndex = 14;
+            // 
             // ModoAleatorio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(55, 53, 62);
             ClientSize = new Size(1105, 500);
+            Controls.Add(txtbCorteMinimo);
+            Controls.Add(btnCortmin);
+            Controls.Add(btnAnt);
+            Controls.Add(btnSgte);
+            Controls.Add(cmbSumidero);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(cmbFuente);
             Controls.Add(label2);
@@ -228,5 +298,11 @@
         private ComboBox cmbFuente;
         private Label label3;
         private NotifyIcon notifyIcon1;
+        private Label label4;
+        private ComboBox cmbSumidero;
+        private Button btnSgte;
+        private Button btnAnt;
+        private Button btnCortmin;
+        private TextBox txtbCorteMinimo;
     }
 }
